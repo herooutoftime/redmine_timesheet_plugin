@@ -120,7 +120,11 @@ class TimesheetController < ApplicationController
 
   def allowed_projects
     if User.current.admin?
-      return Project.where(Project.visible_condition(User.current)).order('name ASC')
+      if Setting.plugin_redmine_timesheet_plugin.present? && Setting.plugin_redmine_timesheet_plugin['project_status'] == 'all'
+        return Project.order('name ASC')
+      else
+        return Project.where(Project.visible_condition(User.current)).order('name ASC')
+      end
     else
       return Project.where(Project.visible_condition(User.current)).order('name ASC')
     end
