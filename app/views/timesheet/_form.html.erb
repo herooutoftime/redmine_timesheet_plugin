@@ -27,7 +27,7 @@
       </div>
 
       <div class="timesheet-projects">
-        <label for="timesheet_projects_" class="select-all"><%= l(:timesheet_project_label)%> test</label>
+        <label for="timesheet_projects_" class="select-all"><%= l(:timesheet_project_label)%></label>
         <%= select_tag 'timesheet[projects][]', project_options(@timesheet), { :multiple => true, :size => @list_size} %>
       </div>
       <div class="timesheet-activities">
